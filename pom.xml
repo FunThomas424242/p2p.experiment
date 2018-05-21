@@ -5,9 +5,19 @@
   <groupId>com.github.funthomas424242</groupId>
   <artifactId>p2p.experiment</artifactId>
   <version>1.0.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>p2p.experiment</name>
+  <description>Ein Versuch zwei Java Clients p2p zu verbinden obgleich jeder hinter einem NAT Router an einem ISP angebunden ist.</description>
+  <inceptionYear>2018</inceptionYear>
+  <url>https://github.com/FunThomas424242/p2p.experiment</url>
   <licenses>
     <license>
-      <url>./LICENSE</url>
+      <url>https://www.gnu.org/licenses/gpl-3.0.de.html</url>
+      <name>GNU LESSER GENERAL PUBLIC LICENSE
+        Version 3, 29 June 2007
+      </name>
+      <distribution>repo</distribution>
     </license>
   </licenses>
   <scm>
@@ -35,4 +45,255 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
+
+  <prerequisites>
+    <maven>3.3.9</maven>
+  </prerequisites>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <version>1.16</version>
+        <configuration>
+          <licenseFile>LICENSE</licenseFile>
+          <licenseName>lgpl_v3</licenseName>
+          <useMissingFile>true</useMissingFile>
+          <excludedLicenses>
+            <excludedLicense>GNU General Public License (GPL) 1.0</excludedLicense>
+            <excludedLicense>GNU General Public License (GPL) 2.0</excludedLicense>
+            <excludedLicense>GNU General Public License (GPL) 3.0</excludedLicense>
+          </excludedLicenses>
+          <failIfWarning>true</failIfWarning>
+          <includes>
+            <include>**/*.java</include>
+            <include>**/*.properties</include>
+            <include>**/*.xml</include>
+          </includes>
+          <excludes>
+            <exclude>**/*.png</exclude>
+            <exclude>**/*.json</exclude>
+          </excludes>
+        </configuration>
+        <executions>
+          <execution>
+            <id>update-header</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>update-file-header</goal>
+              <goal>update-project-license</goal>
+              <goal>add-third-party</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <rulesUri>file:///${project.basedir}/etc/version-rules.xml</rulesUri>
+        </configuration>
+        <executions>
+          <execution>
+            <id>show-dep-updates</id>
+            <phase>
+              validate
+            </phase>
+            <goals>
+              <goal>display-dependency-updates</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>show-plugin-updates</id>
+            <phase>
+              validate
+            </phase>
+            <goals>
+              <goal>display-plugin-updates</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <phase>pre-site</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+            <configuration>
+              <filesets>
+                <fileset>
+                  <directory>${basedir}/docs</directory>
+                  <followSymlinks>false</followSymlinks>
+                </fileset>
+              </filesets>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <encoding>UTF-8</encoding>
+          <compilerArgument>-Xlint:all</compilerArgument>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.21.0</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-surefire-provider</artifactId>
+            <version>1.2.0</version>
+          </dependency>
+          <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.2.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.7.1</version>
+        <configuration>
+          <outputDirectory>${basedir}/docs</outputDirectory>
+          <locales>de</locales>
+          <relativizeDecorationLinks>false</relativizeDecorationLinks>
+          <requires>
+            <require>asciidoctor-diagram</require>
+          </requires>
+          <backend>html5</backend>
+          <asciidoc>
+            <attributes>
+              <icons>font</icons>
+              <source-highlighter>coderay</source-highlighter>
+              <coderay-css>style</coderay-css>
+              <toc>left</toc>
+              <!--<toclevels>2</toclevels>-->
+            </attributes>
+          </asciidoc>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+            <version>1.5.6</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <!-- NOTE: We don't need a groupId specification because the group is
+            org.apache.maven.plugins ...which is assumed by default. -->
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>package-assemblies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <tarLongFileMode>posix</tarLongFileMode>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.0.1</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <organization>
+    <name>PIUG</name>
+    <url>https://piug.slack.com</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <name>FunThomas424242 (Thomas Schubert)</name>
+      <email>funthomas424242@gmail.com</email>
+      <roles>
+        <role>project owner</role>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.9</version>
+        <reportSets>
+          <reportSet>
+            <configuration>
+              <skip>true</skip>
+            </configuration>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
+
 </project>

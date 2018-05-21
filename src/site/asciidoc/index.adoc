@@ -1,0 +1,10 @@
+# P2P Experiment
+:author: FunThomas424242 (Thomas Schubert)
+//:toc:
+:icons: font
+:lang: de
+:encoding: iso-8859-1
+
+Dieses Projekt experimentiert mit der Verbindungsaufnahme zwischen P2P Client auf Basis von JAVA Implementierungen.
+
+link:benutzer.html[Benutzerhandbuch] link:entwickler.html[Entwicklerhandbuch]
