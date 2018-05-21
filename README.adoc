@@ -12,5 +12,9 @@ Ein Versuch zwei Java Clients p2p zu verbinden obgleich jeder hinter einem NAT R
 
 Die aktuelle Dokumentation befindet sich hier: https://funthomas424242.github.io/p2p.experiment/index.html
 
+[#quellen]
+= Quellen
+
+* https://github.com/BradNeuberg/p2psockets
 
 
