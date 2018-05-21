@@ -1,0 +1,11 @@
+
+{
+    "groupID":"com.github.funthomas424242",
+    "artifactID":"p2p.experiment",
+    "version":"1.0.0-SNAPSHOT",
+    "githubUsername":"FunThomas424242",
+    "githubRepositoryname":"p2p.experiment",
+    "bintrayUsername":"funthomas424242",
+    "bintrayRepositoryname":"funthomas424242-lib",
+    "bintrayPackagename":"p2p.experiment"
+}
