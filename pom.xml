@@ -53,89 +53,153 @@
         <maven>3.3.9</maven>
     </prerequisites>
 
+    <!--<repositories>-->
+    <!--<repository>-->
+    <!--<id>mvnrepository</id>-->
+    <!--<url>http://mvnrepository.com/artifact</url>-->
+    <!--</repository>-->
+    <!--</repositories>-->
+
     <dependencyManagement>
         <dependencies>
-            <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk14 -->
-            <dependency>
-                <groupId>org.bouncycastle</groupId>
-                <artifactId>bcprov-jdk14</artifactId>
-                <version>1.59</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>4.0.1</version>
-                <scope>provided</scope>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/org.mortbay.jetty/org.mortbay.jetty -->
-            <dependency>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>org.mortbay.jetty</artifactId>
-                <version>5.1.12</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/jaxen/jaxen -->
-            <dependency>
-                <groupId>jaxen</groupId>
-                <artifactId>jaxen</artifactId>
-                <version>1.1.6</version>
-            </dependency>
+            <!--&lt;!&ndash;&lt;!&ndash; https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk14 &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+            <!--&lt;!&ndash;<groupId>org.bouncycastle</groupId>&ndash;&gt;-->
+            <!--&lt;!&ndash;<artifactId>bcprov-jdk14</artifactId>&ndash;&gt;-->
+            <!--&lt;!&ndash;<version>1.59</version>&ndash;&gt;-->
+            <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+            <!--&lt;!&ndash;<groupId>javax.servlet</groupId>&ndash;&gt;-->
+            <!--&lt;!&ndash;<artifactId>javax.servlet-api</artifactId>&ndash;&gt;-->
+            <!--&lt;!&ndash;<version>4.0.1</version>&ndash;&gt;-->
+            <!--&lt;!&ndash;<scope>provided</scope>&ndash;&gt;-->
+            <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; https://mvnrepository.com/artifact/org.mortbay.jetty/org.mortbay.jetty &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+            <!--&lt;!&ndash;<groupId>org.mortbay.jetty</groupId>&ndash;&gt;-->
+            <!--&lt;!&ndash;<artifactId>org.mortbay.jetty</artifactId>&ndash;&gt;-->
+            <!--&lt;!&ndash;<version>5.1.12</version>&ndash;&gt;-->
+            <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; https://mvnrepository.com/artifact/jaxen/jaxen &ndash;&gt;&ndash;&gt;-->
+            <!--<dependency>-->
+            <!--<groupId>jaxen</groupId>-->
+            <!--<artifactId>jaxen</artifactId>-->
+            <!--<version>1.1.6</version>-->
+            <!--</dependency>-->
+            <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.jxta.platform/jxta -->
         <dependency>
-            <groupId>org.jxta.platform</groupId>
-            <artifactId>jxta</artifactId>
-            <version>2.3.6</version>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.8</version>
         </dependency>
+        <dependency>
+            <groupId>jxta</groupId>
+            <artifactId>jxtaext</artifactId>
+            <version>2.3.4</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jxtaext.jar</systemPath>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/jxta/jxta -->
+        <dependency>
+            <groupId>jxta</groupId>
+            <artifactId>jxta</artifactId>
+            <version>2.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jxta.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom</artifactId>
+            <version>1.0beta10</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jdom.jar</systemPath>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.jdom/jaxen-core -->
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jaxen-core</artifactId>
+            <version>1.0-FCS</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jdom/saxpath -->
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>saxpath</artifactId>
+            <version>1.0-FCS</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jdom/jaxen-jdom -->
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jaxen-jdom</artifactId>
+            <version>1.0-FCS</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/bouncycastle/bcprov-jdk14 -->
+        <dependency>
+            <groupId>bouncycastle</groupId>
+            <artifactId>bcprov-jdk14</artifactId>
+            <version>124</version>
+        </dependency>
+
+
+
+
+
         <!-- https://mvnrepository.com/artifact/p2psockets/p2psockets-core -->
         <dependency>
             <groupId>p2psockets</groupId>
             <artifactId>p2psockets-core</artifactId>
-            <version>1.1.2</version>
+            <version>2.0-r2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/p2psockets-core.jar</systemPath>
         </dependency>
 
-        <!-- Test Abhängigkeiten -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.2.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.testing.compile</groupId>
-            <artifactId>compile-testing</artifactId>
-            <version>0.15</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>1.2.3</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.bval</groupId>
-            <artifactId>bval-jsr</artifactId>
-            <version>1.1.2</version>
-            <scope>test</scope>
-        </dependency>
+        <!--&lt;!&ndash; Test Abhängigkeiten &ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>org.junit.jupiter</groupId>-->
+        <!--<artifactId>junit-jupiter-api</artifactId>-->
+        <!--<version>5.2.0</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>junit</groupId>-->
+        <!--<artifactId>junit</artifactId>-->
+        <!--<version>4.12</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>com.google.testing.compile</groupId>-->
+        <!--<artifactId>compile-testing</artifactId>-->
+        <!--<version>0.15</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/ch.qos.logback/logback-core &ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>ch.qos.logback</groupId>-->
+        <!--<artifactId>logback-core</artifactId>-->
+        <!--<version>1.2.3</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/ch.qos.logback/logback-classic &ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>ch.qos.logback</groupId>-->
+        <!--<artifactId>logback-classic</artifactId>-->
+        <!--<version>1.2.3</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.apache.bval</groupId>-->
+        <!--<artifactId>bval-jsr</artifactId>-->
+        <!--<version>1.1.2</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
