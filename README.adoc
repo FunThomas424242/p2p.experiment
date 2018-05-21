@@ -10,6 +10,7 @@ image:https://badge.waffle.io/FunThomas424242/p2p.experiment.svg?columns=all["Wa
 
 Ein Versuch zwei Java Clients p2p zu verbinden obgleich jeder hinter einem NAT Router an einem ISP angebunden ist.
 
+Die aktuelle Dokumentation befindet sich hier: https://funthomas424242.github.io/p2p.experiment/index.html
 
 
 
